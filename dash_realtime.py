@@ -5,7 +5,13 @@ import time
 
 st.title("Dashboard Transactions Bancaires - Temps Reel")
 
-df = pd.read_csv(r"C:/Users/HP/Desktop/kafka-spark-project/my_data/PS_20174392719_1491204439457_log.csv")
+import random
+types = ['CASH_OUT', 'TRANSFER', 'CASH_IN', 'PAYMENT', 'DEBIT']
+df = pd.DataFrame([{
+    'type': random.choice(types),
+    'amount': round(random.uniform(10, 50000), 2),
+    'isFraud': 1 if random.random() < 0.004 else 0
+} for _ in range(10000)])
 
 placeholder = st.empty()
 
